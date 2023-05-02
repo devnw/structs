@@ -38,8 +38,9 @@ and declare a struct:
 
 ```go
 
-// Convert a struct to a map[string]any // => {"Name":"gopher", "ID":123456,
-"Enabled":true} m := structs.Map(server)
+// Convert a struct to a map[string]any
+
+// => {"Name":"gopher", "ID":123456, "Enabled":true} m := structs.Map(server)
 
 // Convert the values of a struct to a []any // => ["gopher", 123456, true] v :=
 structs.Values(server)
@@ -69,21 +70,27 @@ The structs functions can be also used as independent methods by creating a new
 `*structs.Struct`. This is handy if you want to have more control over the
 structs (such as retrieving a single Field).
 
-```go // Create a new struct type: s := structs.New(server)
+```go
+
+// Create a new struct type: s := structs.New(server)
 
 m := s.Map() // Get a map[string]any v := s.Values() // Get a []any f :=
 s.Fields() // Get a []*Field n := s.Names() // Get a []string f := s.Field(name)
 // Get a *Field based on the given field name f, ok := s.FieldOk(name) // Get a
 *Field based on the given field name n := s.Name() // Get the struct name h :=
 s.HasZero() // Check if any field is uninitialized z := s.IsZero() // Check if
-all fields are uninitialized ```
+all fields are uninitialized
+
+```
 
 ### Field methods
 
 We can easily examine a single Field for more detail. Below you can see how we
 get and interact with various field methods:
 
-```go s := structs.New(server)
+```go
+
+s := structs.New(server)
 
 // Get the Field struct for the "Name" field name := s.Field("Name")
 
@@ -112,20 +119,28 @@ get and interact with various field methods:
     }
 
 // Get the Field's tag value for tag name "json", tag value => "name,omitempty"
-tagValue := name.Tag("json") ```
+tagValue := name.Tag("json")
+
+```
 
 Nested structs are supported too:
 
-```go addrField := s.Field("Server").Field("Addr")
+```go
+
+addrField := s.Field("Server").Field("Addr")
 
 // Get the value for addr a := addrField.Value().(string)
 
-// Or get all fields httpServer := s.Field("Server").Fields() ```
+// Or get all fields httpServer := s.Field("Server").Fields()
+
+```
 
 We can also get a slice of Fields from the Struct type to iterate over all
 fields. This is handy if you wish to examine all fields:
 
-```go s := structs.New(server)
+```go
+
+s := structs.New(server)
 
     for _, f := range s.Fields() {
     	fmt.Printf("field name: %+v\n", f.Name())
