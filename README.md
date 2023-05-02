@@ -10,7 +10,7 @@ improve the existing code.
 
 ## Install
 
-```bash go get go.devnw.com/structs ```
+`go get go.devnw.com/structs`
 
 ## Usage and Examples
 
@@ -36,8 +36,10 @@ and declare a struct:
 
 ```
 
-```go // Convert a struct to a map[string]any // => {"Name":"gopher",
-"ID":123456, "Enabled":true} m := structs.Map(server)
+```go
+
+// Convert a struct to a map[string]any // => {"Name":"gopher", "ID":123456,
+"Enabled":true} m := structs.Map(server)
 
 // Convert the values of a struct to a []any // => ["gopher", 123456, true] v :=
 structs.Values(server)
@@ -57,7 +59,9 @@ structs.HasZero(server)
 structs.IsZero(server)
 
 // Check if server is a struct or a pointer to struct i :=
-structs.IsStruct(server) ```
+structs.IsStruct(server)
+
+```
 
 ### Struct methods
 
